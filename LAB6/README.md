@@ -13,4 +13,21 @@ A small Python module that converts marks to letter grades, works out final mark
 | `student_grades.py` | The module under test |
 | `test_student_grades.py` | Starter test file |
 
-Refer to the lab handout for instructions.
+## Screenshots
+
+### Coverage before additional tests
+
+![Coverage before additional tests](screenshots/coverage_before.png)
+
+### Pytest before additional tests
+
+![Pytest before additional tests](screenshots/pytest_before.png)
+
+### Code coverage after additional tests
+
+![Code coverage after additional tests](screenshots/codecoverage_after.png)
+
+### Branch coverage after additional tests
+
+![Branch coverage after additional tests](screenshots/branchcoverage_after.png)
+
