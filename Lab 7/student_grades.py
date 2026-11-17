@@ -1,12 +1,41 @@
 def average_marks(marks_csv):
-    marks = [int(m) for m in marks_csv.split(',')]
+    if not isinstance(marks_csv, str):
+        raise TypeError("marks must be provided as a CSV string")
+
+    marks = []
+    for mark_text in marks_csv.split(','):
+        mark_text = mark_text.strip()
+        if not mark_text or len(mark_text) > 3:
+            raise ValueError("marks must be integers from 0 to 100")
+        mark = int(mark_text)
+        if mark < 0 or mark > 100:
+            raise ValueError("marks must be integers from 0 to 100")
+        marks.append(mark)
+
+    if not marks:
+        raise ValueError("at least one mark is required")
     return round(sum(marks) / len(marks), 2)
 
 def parse_srn(srn):
+    if not isinstance(srn, str):
+        raise TypeError("SRN must be a string")
+    if (
+        len(srn) != 13
+        or srn[:6] != "PES1UG"
+        or not srn[6:8].isdigit()
+        or not srn[8:10].isalpha()
+        or not srn[10:].isdigit()
+    ):
+        raise ValueError("invalid SRN format")
     return srn[:4], int(srn[6:8]), srn[8:10]
 
 def short_name(full_name):
-    first, last = full_name.split()
+    if not isinstance(full_name, str):
+        raise TypeError("full name must be a string")
+    parts = full_name.split()
+    if len(parts) != 2:
+        raise ValueError("full name must contain exactly two words")
+    first, last = parts
     return first[0].upper() + ". " + last.capitalize()
 
 def main():
